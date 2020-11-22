@@ -1,17 +1,24 @@
 import ArticlePreview from './ArticlePreview';
 import ListPagination from './ListPagination';
-import React from 'react';
+import Loader from './Loader';
+import React, { useState } from 'react';
+
+
 
 const ArticleList = props => {
+
   if (!props.articles) {
     return (
-      <div className="article-preview">Loading...</div>
+
+      <div className="article-preview"><Loader /></div>
     );
   }
 
   if (props.articles.length === 0) {
+
     return (
       <div className="article-preview">
+
         No articles are here... yet.
       </div>
     );
@@ -19,9 +26,12 @@ const ArticleList = props => {
 
   return (
     <div>
+
       {
+
         props.articles.map(article => {
           return (
+
             <ArticlePreview article={article} key={article.slug} />
           );
         })
